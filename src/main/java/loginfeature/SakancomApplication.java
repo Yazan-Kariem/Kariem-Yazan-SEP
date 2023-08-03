@@ -4,7 +4,7 @@ import java.util.logging.Logger;
 
 public class SakancomApplication{
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
        Logger logger = Logger.getLogger(SakancomApplication.class.getName());
         String line="_____________________________________________";
         while(true){

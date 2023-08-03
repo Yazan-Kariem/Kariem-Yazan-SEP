@@ -18,7 +18,7 @@ public class ControlPanelFeature {
 
     }
     @Given("the tenant has house booked before username is {string}")
-    public void theTenantHasHouseBookedBeforeUsernameIs(String string) {
+    public void theTenantHasHouseBookedBeforeUsernameIs(String string) throws Exception {
 
     assertTrue(obj.isBooked(string));
 
@@ -26,7 +26,7 @@ public class ControlPanelFeature {
 
     }
     @Then("the control panel will appear for tenant username {string}")
-    public void theControlPanelWillAppear(String string) {
+    public void theControlPanelWillAppear(String string) throws Exception {
       assertTrue(obj.displayControlPanel(string));
     }
 
@@ -36,12 +36,12 @@ public class ControlPanelFeature {
     }
 
     @And("the tenant didnt booked before username is {string}")
-    public void theTenantDidntBookedBeforeUsernameIs(String arg0) {
+    public void theTenantDidntBookedBeforeUsernameIs(String arg0) throws Exception {
 assertFalse(obj.isBooked(arg0));
     }
 
     @Then("the control panel will not appear for tenant username {string}")
-    public void theControlPanelWillNotAppearForTenantUsername(String arg0) {
+    public void theControlPanelWillNotAppearForTenantUsername(String arg0) throws Exception {
      assertFalse(obj.displayControlPanel(arg0));
     }
 
