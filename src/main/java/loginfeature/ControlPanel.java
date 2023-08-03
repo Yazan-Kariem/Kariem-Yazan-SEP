@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 public class ControlPanel {
     String host = "localhost";
-    int port = 3306;
+    int port = 3306;//
     String database = "sakancom";
     String username = "root";
     String password = "password";
