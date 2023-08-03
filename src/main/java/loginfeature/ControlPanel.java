@@ -1,6 +1,5 @@
 package loginfeature;
 
-import io.cucumber.java.an.E;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,7 +15,7 @@ public class ControlPanel {
     String password = "password";
     String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
     private static final Logger logger = Logger.getLogger(ControlPanel.class.getName());
-
+String select="Select * from booking where tenantUserName='";
     public boolean isBooked(String userName) throws Exception {
 
 
@@ -25,7 +24,7 @@ public class ControlPanel {
 
             Statement statement = connection.createStatement();
 
-            String query = "Select * from booking where tenantUserName='"+userName+"'" ;
+            String query = select+userName+"'" ;
             ResultSet res = statement.executeQuery(query);
             while (res.next()){
                 return true;
@@ -65,7 +64,7 @@ public class ControlPanel {
                     logger.info(age);
                     logger.info(registrationNumber);
                     logger.info(major);
-                    System.out.println("_____________________________________________");
+                    logger.info("_____________________________________________");
                     return true;
 
 
@@ -79,7 +78,7 @@ public class ControlPanel {
     }
 
     public boolean displayOwnerInfo(String userName){
-        String ownerName=new String(getOwnerName(userName));
+        String ownerName=(getOwnerName(userName));
 
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
 
@@ -117,7 +116,7 @@ public class ControlPanel {
 
             Statement statement = connection.createStatement();
 
-            String query = "Select * from booking where tenantUserName='" + userName + "'";
+            String query = select + userName + "'";
             ResultSet res = statement.executeQuery(query);
             while (res.next()){
                 return res.getString(3);
@@ -138,7 +137,7 @@ public class ControlPanel {
 
                 Statement statement = connection.createStatement();
 
-                String  query = "Select * from booking where tenantUserName='"+userName+"'" ;
+                String  query = select+userName+"'" ;
                 ResultSet res = statement.executeQuery(query);
                 while (res.next()){
                     return res.getString(1);
@@ -149,7 +148,7 @@ public class ControlPanel {
 return "null";
         }
         public boolean displayRent(String userName) throws Exception {
-        String id=new String(getHouseID(userName));
+        String id=(getHouseID(userName));
 
           Connection connection = DriverManager.getConnection(url, username, password);
 

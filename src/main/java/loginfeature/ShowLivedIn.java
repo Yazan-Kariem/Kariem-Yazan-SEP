@@ -14,9 +14,9 @@ public class ShowLivedIn {
     String password = "password";
     String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
     private static final Logger logger = Logger.getLogger(ShowLivedIn.class.getName());
-    public boolean isLived(String id){
+    public boolean isLived(String id) throws Exception{
 
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+    Connection connection = DriverManager.getConnection(url, username, password);
 
             Statement statement = connection.createStatement();
 
@@ -26,31 +26,27 @@ public class ShowLivedIn {
                 return true;
             }
 
-        }
-        catch (Exception e){
 
-        }
 
         return false;
 
     }
-    public boolean displayLived(String id) {
+    public boolean displayLived(String id) throws Exception{
         if (isLived(id)) {
 
-            try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            Connection connection = DriverManager.getConnection(url, username, password);
 
                 Statement statement = connection.createStatement();
 
                String query = "Select * from Tenants_Housing where houseID='" + id + "'";
                 ResultSet res = statement.executeQuery(query);
                 while (res.next()) {
-                    logger.info("People is : " + res.getString(1));
+                    String people="People is : " + res.getString(1);
+                    logger.info(people);
 
                 }
                 return true;
-            } catch (Exception e) {
 
-            }
 
 
         }

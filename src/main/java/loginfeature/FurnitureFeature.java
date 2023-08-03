@@ -17,7 +17,7 @@ Furniture obj=new Furniture();
     }
     boolean avb=false;
     @Given("the tenant has available furnitures the tenant username is {string}")
-    public void theTenantHasAvailableFurnitures(String string) {
+    public void theTenantHasAvailableFurnitures(String string) throws Exception {
       boolean flag= obj.checkAvailability(string);
         assertTrue(flag);
       if(flag){
@@ -27,7 +27,7 @@ Furniture obj=new Furniture();
 
     }
     @Then("the program will appear the furnitures for username {string}")
-    public void theProgramWillAppearTheFurnitures(String string) {
+    public void theProgramWillAppearTheFurnitures(String string) throws Exception {
        assertTrue(obj.displayFurniture(string));
 
     }
@@ -38,12 +38,12 @@ Furniture obj=new Furniture();
     }
     boolean avb1=false;
     @Given("the tenant doesn't have available furnitures the tenant username is {string}")
-    public void theTenantDoesnTHaveAvailableFurnitures(String string) {
+    public void theTenantDoesnTHaveAvailableFurnitures(String string) throws Exception {
         boolean flag=obj.checkAvailability(string);
       assertFalse(flag);
     }
     @Then("the program will not appear the furnitures for username {string}")
-    public void theProgramWillNotAppearTheFurnitures(String string) {
+    public void theProgramWillNotAppearTheFurnitures(String string) throws Exception {
        assertFalse(obj.displayFurniture(string));
     }
     @Given("tenant typed {string} to choose add option to add furniture")
@@ -52,7 +52,7 @@ Furniture obj=new Furniture();
     }
 
     @Then("the program will appear window to add furniture has these informations username is {string} and Picture is {string} and Description is {string} and Price is {string} and ID is {string} and selled is {string}")
-    public void theProgramWillAppearWindowToAddFurnitureHasTheseInformationsUsernameIsAndPrictureIsAndDescriptionIsAndPriceIsAndIDIsAndSelledIs(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5) {
+    public void theProgramWillAppearWindowToAddFurnitureHasTheseInformationsUsernameIsAndPrictureIsAndDescriptionIsAndPriceIsAndIDIsAndSelledIs(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5) throws Exception {
         boolean flag= obj.addFurniture(arg0, arg1, arg2, arg3, arg4, arg5);
        assertTrue(flag);
     }
@@ -63,7 +63,7 @@ Furniture obj=new Furniture();
     }
 
     @And("furniture id is {string} its available to sell and the tenant username is {string}")
-    public void furnitureIdIsItsAvailableToSellAndTheTenantUsernameIs(String arg0, String arg1) {
+    public void furnitureIdIsItsAvailableToSellAndTheTenantUsernameIs(String arg0, String arg1) throws Exception {
     boolean flag= obj.checkAvailability(arg1,arg0);
    assertTrue(flag);
 
@@ -71,7 +71,7 @@ Furniture obj=new Furniture();
 
 
     @Then("the program will sell the furniture id {string} username is {string}")
-    public void theProgramWillSellTheFurnitureId(String arg0,String arg1) {
+    public void theProgramWillSellTheFurnitureId(String arg0,String arg1) throws Exception {
       assertTrue(obj.sellFurniture(arg0,arg1));
     }
 
@@ -82,19 +82,19 @@ Furniture obj=new Furniture();
     }
 
     @And("furniture id is {string} its not available to sell and the tenant username is {string}")
-    public void furnitureIdIsItsNotAvailableToSellAndTheTenantUsernameIs(String arg0, String arg1) {
+    public void furnitureIdIsItsNotAvailableToSellAndTheTenantUsernameIs(String arg0, String arg1) throws Exception {
         boolean flag= obj.checkAvailability(arg1,arg0);
        assertFalse(flag);
     }
 
     @Then("the program will not sell the furniture id {string} username is {string}")
-    public void theProgramWillNotSellTheFurnitureId(String arg0,String arg1) {
+    public void theProgramWillNotSellTheFurnitureId(String arg0,String arg1) throws Exception {
       assertFalse(obj.sellFurniture(arg1,arg0));
     }
 
 
     @And("if the id duplicated is added before it will not added it username is {string} and Picture is {string} and Description is {string} and Price is {string} and ID is {string} and selled is {string}")
-    public void ifTheIdDuplicatedIsAddedBeforeItWillNotAddedItUsernameIsAndPictureIsAndDescriptionIsAndPriceIsAndIDIsAndSelledIs(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5) {
+    public void ifTheIdDuplicatedIsAddedBeforeItWillNotAddedItUsernameIsAndPictureIsAndDescriptionIsAndPriceIsAndIDIsAndSelledIs(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5) throws Exception {
     assertFalse(obj.addFurniture(arg0, arg1, arg2, arg3, arg4, arg5));
     }
 }

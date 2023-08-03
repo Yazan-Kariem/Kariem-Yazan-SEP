@@ -16,7 +16,7 @@ public class ShowLivedInFeature {
     }
 
     @And("theres peoples in houses id {string}")
-    public void theresPeoplesInHousesId(String arg0) {
+    public void theresPeoplesInHousesId(String arg0) throws Exception {
 
             assertTrue(obj.isLived(arg0));
 
@@ -24,7 +24,7 @@ public class ShowLivedInFeature {
     }
 
     @Then("the peoples username will appear in house id {string}")
-    public void thePeoplesUsernameWillAppear(String string) {
+    public void thePeoplesUsernameWillAppear(String string) throws Exception {
 
             assertTrue(obj.displayLived(string));
 
@@ -37,14 +37,14 @@ public class ShowLivedInFeature {
 
     }
     @And("theres no peoples in houses id {string}")
-    public void theresNoPeoplesInHousesId(String arg0) {
+    public void theresNoPeoplesInHousesId(String arg0) throws Exception {
 
             assertTrue(!obj.isLived(arg0));
 
     }
 
     @Then("this peoples username will not appear in house id {string}")
-    public void thisPeoplesUsernameWillNotAppear(String string) {
+    public void thisPeoplesUsernameWillNotAppear(String string) throws Exception {
 
             assertTrue(!obj.displayLived(string));
 

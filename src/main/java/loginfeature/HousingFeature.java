@@ -20,7 +20,7 @@ public class HousingFeature {
        
     }
     @Then("the Available housing appear")
-    public void theAvailableHousingAppear() {
+    public void theAvailableHousingAppear() throws Exception {
         int counter=obj.showAvailable();
             
                 assertTrue(counter>1);

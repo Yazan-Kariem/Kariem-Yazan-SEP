@@ -10,7 +10,7 @@ public class BookingFeature {
     HousingEntity obj=new HousingEntity();
 
     @Given("tenant wants to booking and theres available housing id {string}")
-    public void tenantWantsToBooking(String string) {
+    public void tenantWantsToBooking(String string) throws Exception {
         boolean flag;
         flag= obj.availableWithID(string);
        assertTrue(flag);
@@ -25,7 +25,7 @@ public class BookingFeature {
     }
 
     @Then("the booking of housing with id {string} will done and the tenant username is {string}")
-    public void theBookingWillDone(String string,String string1) {
+    public void theBookingWillDone(String string,String string1) throws Exception {
      assertTrue(obj.booking(string,string1));
     }
 
@@ -52,7 +52,7 @@ boolean test=false;
     }
 
     @Given("tenant wants to booking and the house id {string} is not available")
-    public void tenantWantsToBookingAndTheHouseIdIsNotAvailable(String arg0) {
+    public void tenantWantsToBookingAndTheHouseIdIsNotAvailable(String arg0) throws Exception {
 assertFalse(   obj.availableWithID(arg0));
     }
 
@@ -62,7 +62,7 @@ assertFalse(   obj.availableWithID(arg0));
     }
 
     @Then("the booking will not done for id {string} for username {string}")
-    public void theBookingWillNotDoneForId(String arg0,String arg1) {
+    public void theBookingWillNotDoneForId(String arg0,String arg1) throws Exception {
         assertFalse(obj.booking(arg0,arg1));
     }
 }

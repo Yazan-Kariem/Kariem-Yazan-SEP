@@ -16,44 +16,48 @@ public class HousingEntity {
     Logger logger = Logger.getLogger(HousingEntity.class.getName());
 String wid="' where id='";
 
-    public int showAvailable() {
+    public int showAvailable() throws Exception {
 
         int counter = 1;
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+        Connection connection = DriverManager.getConnection(url, username, password);
 
-            Statement statement = connection.createStatement();
+        Statement statement = connection.createStatement();
 
-           String query = "Select * from housing where available='Yes' and accept='true'";
-            ResultSet resultSet = statement.executeQuery(query);
+        String query = "Select * from housing where available='Yes' and accept='true'";
+        ResultSet resultSet = statement.executeQuery(query);
 
-            while (resultSet.next()) {
+        while (resultSet.next()) {
+            String scounter = counter + "-";
+            String id1 = "ID : {}" + resultSet.getString(8);
+            String picture = "Picture : {}" + resultSet.getString(1);
+            String price = "Price : {}" + resultSet.getString(2);
+            String location = "Location : {}" + resultSet.getString(3);
+            String service = "Services : {}" + resultSet.getString(4);
+            String number = "Number of people lived in : {}" + resultSet.getString(11);
+            String floor = "Floor Number: {}" + resultSet.getString(9);
+            String departmentName = "Department Name : {}" + resultSet.getString(10);
+            logger.info(scounter);
+            logger.info(id1);
+            logger.info(picture);
+            logger.info(price);
+            logger.info(location);
+            logger.info(service);
+            logger.info(number);
+            logger.info(floor);
+            logger.info(departmentName);
+            counter++;
+            logger.info("_____________________________________________");
 
 
-                logger.info(counter + "-");
-                logger.info("ID : {}" +resultSet.getString(8) );
-                logger.info("Picture : {}" + resultSet.getString(1));
-                logger.info("Price : {}" + resultSet.getString(2));
-                logger.info("Location : {}" + resultSet.getString(3));
-                logger.info("Services : {}" + resultSet.getString(4));
-                logger.info("Number of people lived in : {}" + resultSet.getString(11));
-                logger.info("Floor Number: {}" + resultSet.getString(9));
-                logger.info("Department Name : {}" + resultSet.getString(10));
-
-
-                counter++;
-                logger.info("_____________________________________________");
-
-            }
-        } catch (Exception e) {
 
         }
         return counter;
     }
 
-    public boolean availableWithID(String id){
+    public boolean availableWithID(String id) throws Exception {
 
         int counter = 1;
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+     Connection connection = DriverManager.getConnection(url, username, password);
 
             Statement statement = connection.createStatement();
 
@@ -62,10 +66,7 @@ String wid="' where id='";
 
             while (resultSet.next()) {
                 counter++;
-            }}
-        catch (Exception E){
-
-        }
+            }
         if(counter>1){
             return true;
         }
@@ -73,7 +74,7 @@ String wid="' where id='";
 
             }
 
-            public boolean booking(String id,String userName){
+            public boolean booking(String id,String userName) throws Exception{
         int flag1=0;
         int flag=0;
                 try {
@@ -84,7 +85,7 @@ String wid="' where id='";
                 }
                 if (flag1 == 1 ) {
 
-                    try (Connection connection = DriverManager.getConnection(url, username, password)) {
+                  Connection connection = DriverManager.getConnection(url, username, password);
 
                         Statement statement = connection.createStatement();
                         Statement statement1 = connection.createStatement();
@@ -130,10 +131,7 @@ flag=1;
                         if (flag==1) {
                             return true;
                         }
-                    } catch (Exception e) {
 
-
-                    }
                 }
            return false;
 }
