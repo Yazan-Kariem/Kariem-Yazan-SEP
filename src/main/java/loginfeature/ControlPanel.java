@@ -1,10 +1,7 @@
 package loginfeature;
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.logging.Logger;
 
 public class ControlPanel {
@@ -16,7 +13,7 @@ public class ControlPanel {
     String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
     private static final Logger logger = Logger.getLogger(ControlPanel.class.getName());
 String select="Select * from booking where tenantUserName='";
-    public boolean isBooked(String userName) throws Exception {
+    public boolean isBooked(String userName) throws SQLException {
 
 
 
@@ -40,7 +37,7 @@ String select="Select * from booking where tenantUserName='";
 
     }
 
-    public boolean displayTenantInfo(String userName) throws Exception{
+    public boolean displayTenantInfo(String userName) throws SQLException{
 
         if(isBooked(userName)){
 
@@ -77,10 +74,10 @@ String select="Select * from booking where tenantUserName='";
         return false;
     }
 
-    public boolean displayOwnerInfo(String userName){
+    public boolean displayOwnerInfo(String userName) throws SQLException{
         String ownerName=(getOwnerName(userName));
 
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+       Connection connection = DriverManager.getConnection(url, username, password);
 
             Statement statement = connection.createStatement();
 
@@ -102,17 +99,14 @@ String select="Select * from booking where tenantUserName='";
                 return true;
             }
 
-        }
-        catch (Exception e){
 
-        }
         return false;
     }
 
-    public String getOwnerName(String userName){
+    public String getOwnerName(String userName) throws SQLException{
 
 
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+       Connection connection = DriverManager.getConnection(url, username, password);
 
             Statement statement = connection.createStatement();
 
@@ -122,15 +116,12 @@ String select="Select * from booking where tenantUserName='";
                 return res.getString(3);
             }
 
-        }
-        catch (Exception e){
 
-        }
         return "null";
 
         }
 
-        public String getHouseID(String userName) throws Exception{
+        public String getHouseID(String userName) throws SQLException{
 
 
         Connection connection = DriverManager.getConnection(url, username, password);
@@ -147,7 +138,7 @@ String select="Select * from booking where tenantUserName='";
 
 return "null";
         }
-        public boolean displayRent(String userName) throws Exception {
+        public boolean displayRent(String userName) throws SQLException {
         String id=(getHouseID(userName));
 
           Connection connection = DriverManager.getConnection(url, username, password);
@@ -166,7 +157,7 @@ return true;
 
             return false;
         }
-public boolean displayControlPanel(String userName) throws Exception {
+public boolean displayControlPanel(String userName) throws SQLException {
 int flag=0;
 int flag1=0;
 int flag2=0;

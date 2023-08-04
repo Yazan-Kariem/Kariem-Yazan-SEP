@@ -4,6 +4,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
+import java.sql.SQLException;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -17,7 +19,7 @@ Furniture obj=new Furniture();
     }
     boolean avb=false;
     @Given("the tenant has available furnitures the tenant username is {string}")
-    public void theTenantHasAvailableFurnitures(String string) throws Exception {
+    public void theTenantHasAvailableFurnitures(String string) throws SQLException {
       boolean flag= obj.checkAvailability(string);
         assertTrue(flag);
       if(flag){
@@ -27,7 +29,7 @@ Furniture obj=new Furniture();
 
     }
     @Then("the program will appear the furnitures for username {string}")
-    public void theProgramWillAppearTheFurnitures(String string) throws Exception {
+    public void theProgramWillAppearTheFurnitures(String string) throws SQLException {
        assertTrue(obj.displayFurniture(string));
 
     }
@@ -38,12 +40,12 @@ Furniture obj=new Furniture();
     }
     boolean avb1=false;
     @Given("the tenant doesn't have available furnitures the tenant username is {string}")
-    public void theTenantDoesnTHaveAvailableFurnitures(String string) throws Exception {
+    public void theTenantDoesnTHaveAvailableFurnitures(String string) throws SQLException {
         boolean flag=obj.checkAvailability(string);
       assertFalse(flag);
     }
     @Then("the program will not appear the furnitures for username {string}")
-    public void theProgramWillNotAppearTheFurnitures(String string) throws Exception {
+    public void theProgramWillNotAppearTheFurnitures(String string) throws SQLException {
        assertFalse(obj.displayFurniture(string));
     }
     @Given("tenant typed {string} to choose add option to add furniture")
@@ -63,7 +65,7 @@ Furniture obj=new Furniture();
     }
 
     @And("furniture id is {string} its available to sell and the tenant username is {string}")
-    public void furnitureIdIsItsAvailableToSellAndTheTenantUsernameIs(String arg0, String arg1) throws Exception {
+    public void furnitureIdIsItsAvailableToSellAndTheTenantUsernameIs(String arg0, String arg1) throws SQLException {
     boolean flag= obj.checkAvailability(arg1,arg0);
    assertTrue(flag);
 
@@ -71,7 +73,7 @@ Furniture obj=new Furniture();
 
 
     @Then("the program will sell the furniture id {string} username is {string}")
-    public void theProgramWillSellTheFurnitureId(String arg0,String arg1) throws Exception {
+    public void theProgramWillSellTheFurnitureId(String arg0,String arg1) throws SQLException {
       assertTrue(obj.sellFurniture(arg0,arg1));
     }
 
@@ -82,13 +84,13 @@ Furniture obj=new Furniture();
     }
 
     @And("furniture id is {string} its not available to sell and the tenant username is {string}")
-    public void furnitureIdIsItsNotAvailableToSellAndTheTenantUsernameIs(String arg0, String arg1) throws Exception {
+    public void furnitureIdIsItsNotAvailableToSellAndTheTenantUsernameIs(String arg0, String arg1) throws SQLException {
         boolean flag= obj.checkAvailability(arg1,arg0);
        assertFalse(flag);
     }
 
     @Then("the program will not sell the furniture id {string} username is {string}")
-    public void theProgramWillNotSellTheFurnitureId(String arg0,String arg1) throws Exception {
+    public void theProgramWillNotSellTheFurnitureId(String arg0,String arg1) throws SQLException {
       assertFalse(obj.sellFurniture(arg1,arg0));
     }
 

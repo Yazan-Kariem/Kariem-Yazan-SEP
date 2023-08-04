@@ -1,9 +1,6 @@
 package loginfeature;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.logging.Logger;
 
 public class HousingEntity {
@@ -16,7 +13,7 @@ public class HousingEntity {
     Logger logger = Logger.getLogger(HousingEntity.class.getName());
 String wid="' where id='";
 
-    public int showAvailable() throws Exception {
+    public int showAvailable() throws SQLException {
 
         int counter = 1;
         Connection connection = DriverManager.getConnection(url, username, password);
@@ -54,7 +51,7 @@ String wid="' where id='";
         return counter;
     }
 
-    public boolean availableWithID(String id) throws Exception {
+    public boolean availableWithID(String id) throws SQLException {
 
         int counter = 1;
      Connection connection = DriverManager.getConnection(url, username, password);
@@ -74,7 +71,7 @@ String wid="' where id='";
 
             }
 
-            public boolean booking(String id,String userName) throws Exception{
+            public boolean booking(String id,String userName) throws SQLException{
         int flag1=0;
         int flag=0;
                 try {

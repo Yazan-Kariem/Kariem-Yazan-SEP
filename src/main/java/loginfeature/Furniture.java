@@ -1,9 +1,6 @@
 package loginfeature;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.logging.Logger;
 
 public class Furniture {
@@ -22,7 +19,7 @@ public class Furniture {
     String password = "password";
     String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
 
-    public boolean checkAvailability(String userName) throws Exception {
+    public boolean checkAvailability(String userName) throws SQLException {
 
 
         Connection connection = DriverManager.getConnection(url, username, password);
@@ -41,7 +38,7 @@ public class Furniture {
 
     }
 
-    public boolean displayFurniture(String userName) throws Exception {
+    public boolean displayFurniture(String userName) throws SQLException {
         if (checkAvailability(userName)) {
 
             int counter = 1;
@@ -82,7 +79,7 @@ public class Furniture {
 
     }
 
-    public boolean sellFurniture(String id, String userName) throws Exception {
+    public boolean sellFurniture(String id, String userName) throws SQLException {
         if (checkAvailability(userName, id)) {
 
 
@@ -99,7 +96,7 @@ public class Furniture {
         return false;
     }
 
-    public boolean checkAvailability(String userName, String id) throws Exception {
+    public boolean checkAvailability(String userName, String id) throws SQLException {
 
         int counter = 1;
         Connection connection = DriverManager.getConnection(url, username, password);

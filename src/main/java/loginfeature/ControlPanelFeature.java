@@ -4,6 +4,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
+import java.sql.SQLException;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -18,7 +20,7 @@ public class ControlPanelFeature {
 
     }
     @Given("the tenant has house booked before username is {string}")
-    public void theTenantHasHouseBookedBeforeUsernameIs(String string) throws Exception {
+    public void theTenantHasHouseBookedBeforeUsernameIs(String string) throws SQLException {
 
     assertTrue(obj.isBooked(string));
 
@@ -26,7 +28,7 @@ public class ControlPanelFeature {
 
     }
     @Then("the control panel will appear for tenant username {string}")
-    public void theControlPanelWillAppear(String string) throws Exception {
+    public void theControlPanelWillAppear(String string) throws SQLException {
       assertTrue(obj.displayControlPanel(string));
     }
 
@@ -36,12 +38,12 @@ public class ControlPanelFeature {
     }
 
     @And("the tenant didnt booked before username is {string}")
-    public void theTenantDidntBookedBeforeUsernameIs(String arg0) throws Exception {
+    public void theTenantDidntBookedBeforeUsernameIs(String arg0) throws SQLException {
 assertFalse(obj.isBooked(arg0));
     }
 
     @Then("the control panel will not appear for tenant username {string}")
-    public void theControlPanelWillNotAppearForTenantUsername(String arg0) throws Exception {
+    public void theControlPanelWillNotAppearForTenantUsername(String arg0) throws SQLException {
      assertFalse(obj.displayControlPanel(arg0));
     }
 

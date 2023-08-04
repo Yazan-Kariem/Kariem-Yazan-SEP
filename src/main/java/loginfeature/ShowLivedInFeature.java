@@ -4,6 +4,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
+import java.sql.SQLException;
+
 import static org.junit.Assert.assertTrue;
 
 public class ShowLivedInFeature {
@@ -16,7 +18,7 @@ public class ShowLivedInFeature {
     }
 
     @And("theres peoples in houses id {string}")
-    public void theresPeoplesInHousesId(String arg0) throws Exception {
+    public void theresPeoplesInHousesId(String arg0) throws SQLException {
 
             assertTrue(obj.isLived(arg0));
 
@@ -24,7 +26,7 @@ public class ShowLivedInFeature {
     }
 
     @Then("the peoples username will appear in house id {string}")
-    public void thePeoplesUsernameWillAppear(String string) throws Exception {
+    public void thePeoplesUsernameWillAppear(String string) throws SQLException {
 
             assertTrue(obj.displayLived(string));
 
@@ -37,14 +39,14 @@ public class ShowLivedInFeature {
 
     }
     @And("theres no peoples in houses id {string}")
-    public void theresNoPeoplesInHousesId(String arg0) throws Exception {
+    public void theresNoPeoplesInHousesId(String arg0) throws SQLException {
 
             assertTrue(!obj.isLived(arg0));
 
     }
 
     @Then("this peoples username will not appear in house id {string}")
-    public void thisPeoplesUsernameWillNotAppear(String string) throws Exception {
+    public void thisPeoplesUsernameWillNotAppear(String string) throws SQLException {
 
             assertTrue(!obj.displayLived(string));
 

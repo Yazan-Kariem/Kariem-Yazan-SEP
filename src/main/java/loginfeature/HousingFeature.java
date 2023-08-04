@@ -4,6 +4,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
+import java.sql.SQLException;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -20,7 +22,7 @@ public class HousingFeature {
        
     }
     @Then("the Available housing appear")
-    public void theAvailableHousingAppear() throws Exception {
+    public void theAvailableHousingAppear() throws SQLException {
         int counter=obj.showAvailable();
             
                 assertTrue(counter>1);
