@@ -47,7 +47,7 @@ String select="Select * from booking where tenantUserName='";
 
                     String query="Select * from tenant where username='"+userName+"'";
                     ResultSet res=statement.executeQuery(query);
-                    System.out.println("Personal Information : ");
+                   logger.info("Personal Information : ");
                 while (res.next()){///
                     String name="Name : "+res.getString(1)+" "+res.getString(2)+" "+res.getString(3);
                     String phoneNumber="Phone Number : "+res.getString(4);
@@ -173,8 +173,9 @@ if(displayRent(userName)){
 if(flag==1 && flag1==1 && flag2==1){
 
     return true;
-}
-return false;
+}else{return false;}
+
+
 }
 
 

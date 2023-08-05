@@ -50,11 +50,15 @@ public class Furniture {
 
             while (resultSet.next()) {
                 String idt = "ID : " + resultSet.getString(5);
-                logger.info(counter + "-");
+                String pcounter=counter + "-";
+                String ppicture="Picture : " + resultSet.getString(2);
+                String residence="residence_location_desc : " + resultSet.getString(3);
+                String pprice="Price : " + resultSet.getString(4);
+                logger.info(pcounter);
                 logger.info(idt);
-                logger.info("Picture : " + resultSet.getString(2));
-                logger.info("residence_location_desc : " + resultSet.getString(3));
-                logger.info("Price : " + resultSet.getString(4));
+                logger.info(ppicture);
+                logger.info(residence);
+                logger.info(pprice);
                 logger.info("_____________________________________________");
                 counter++;
             }
@@ -67,7 +71,7 @@ public class Furniture {
         return false;
     }
 
-    public boolean addFurniture(String userName, String picture, String description, String price, String id, String selled) throws Exception {
+    public boolean addFurniture(String userName, String picture, String description, String price, String id, String selled) throws SQLException {
         String query = "insert into forniture (id,picture,residence_location_desc,price,username_tenant,selled) value ('" + id + "','" + picture + "','" + description + "','" + price + "','" + userName + "','" + selled + "')";
 
 
@@ -113,10 +117,10 @@ public class Furniture {
         }
         if (counter > 1) {
             return true;
-        }
+        }else {return false;}
 
 
-        return false;
+
 
 
     }

@@ -54,7 +54,7 @@ Furniture obj=new Furniture();
     }
 
     @Then("the program will appear window to add furniture has these informations username is {string} and Picture is {string} and Description is {string} and Price is {string} and ID is {string} and selled is {string}")
-    public void theProgramWillAppearWindowToAddFurnitureHasTheseInformationsUsernameIsAndPrictureIsAndDescriptionIsAndPriceIsAndIDIsAndSelledIs(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5) throws Exception {
+    public void theProgramWillAppearWindowToAddFurnitureHasTheseInformationsUsernameIsAndPrictureIsAndDescriptionIsAndPriceIsAndIDIsAndSelledIs(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5) throws SQLException {
         boolean flag= obj.addFurniture(arg0, arg1, arg2, arg3, arg4, arg5);
        assertTrue(flag);
     }
@@ -79,7 +79,7 @@ Furniture obj=new Furniture();
 
 
     @Given("tenant typed {string} to sell his furniture id is {string}")
-    public void tenantTypedTosellHisFurnitureIdIs(String arg0, String arg1) {
+    public void tenantTypedToSellHisFurnitureIdIs1(String arg0, String arg1) {
       assertTrue(arg0.equals("3" )&& arg1.equals("2"));
     }
 
@@ -96,7 +96,7 @@ Furniture obj=new Furniture();
 
 
     @And("if the id duplicated is added before it will not added it username is {string} and Picture is {string} and Description is {string} and Price is {string} and ID is {string} and selled is {string}")
-    public void ifTheIdDuplicatedIsAddedBeforeItWillNotAddedItUsernameIsAndPictureIsAndDescriptionIsAndPriceIsAndIDIsAndSelledIs(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5) throws Exception {
+    public void ifTheIdDuplicatedIsAddedBeforeItWillNotAddedItUsernameIsAndPictureIsAndDescriptionIsAndPriceIsAndIDIsAndSelledIs(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5) throws SQLException {
     assertFalse(obj.addFurniture(arg0, arg1, arg2, arg3, arg4, arg5));
     }
 }

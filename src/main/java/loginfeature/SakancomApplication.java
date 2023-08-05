@@ -25,8 +25,8 @@ logger.info(line);
                 logger.info("Enter User Name : ");
                 in.userName = input1.nextLine();
                 logger.info("Enter the Password : ");
-                in.password1 = input1.nextLine();
-                String role= in.checkValues(in.userName,in.password1);
+                in.password = input1.nextLine();
+                String role= in.checkValues(in.userName,in.password);
 
 
                 if(role.equals("tenant")){
@@ -119,16 +119,17 @@ else if (choose==5) {
 
                 }
                 else if(role.equals("owner")){
+                    logger.info("in");
                 }
                 else if (role.equals("admin")) {
-
+                    logger.info("in");
                 }
 
                 logger.info(line);
             }
 
             else if (loginOrSignUp==2) {
-
+logger.info("in");
             }
         }
     }

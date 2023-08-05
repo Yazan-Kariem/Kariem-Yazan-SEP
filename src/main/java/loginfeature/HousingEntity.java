@@ -64,10 +64,10 @@ String wid="' where id='";
             while (resultSet.next()) {
                 counter++;
             }
-        if(counter>1){
+        if(counter>1) {
             return true;
-        }
-        return false;
+        }else return false;
+
 
             }
 
@@ -77,9 +77,7 @@ String wid="' where id='";
                 try {
                     Integer.parseInt(id);
                     flag1 = 1;
-                } catch (Exception ex) {
-
-                }
+                } catch (Exception ex) {logger.info("wrong input");}
                 if (flag1 == 1 ) {
 
                   Connection connection = DriverManager.getConnection(url, username, password);
