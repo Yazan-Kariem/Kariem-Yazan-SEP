@@ -7,7 +7,7 @@ public class SakancomApplication{
     public static void main(String[] args) throws Exception {
        Logger logger = Logger.getLogger(SakancomApplication.class.getName());
         String line="_____________________________________________";
-        while(true){
+        while(true){//
 logger.info(line);
             logger.info("Choose from the following ");
             logger.info("1-Login");
