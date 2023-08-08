@@ -1,8 +1,9 @@
-package loginfeature;
+package testcode;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import productioncode.HousingEntity;
 
 import java.sql.SQLException;
 
@@ -13,16 +14,15 @@ public class BookingFeature {
 
     @Given("tenant wants to booking and theres available housing id {string}")
     public void tenantWantsToBooking(String string) throws SQLException {
-        boolean flag;
-        flag= obj.availableWithID(string);
-       assertTrue(flag);
+
+       assertTrue(obj.availableWithID(string));
 
     }
 
     @And("the tenant typed {string} then type the id {string}")
     public void theTenantTypedThenTypeTheId(String arg0, String arg1) {
 
-            assertTrue(((arg0.equals("Yes") && arg1.equals("1"))&&!test)||test);
+            assertTrue((arg0.equals("Yes") && arg1.equals("1")) || test);
 
     }
 

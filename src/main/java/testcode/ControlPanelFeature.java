@@ -1,13 +1,13 @@
-package loginfeature;
+package testcode;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import productioncode.ControlPanel;
 
 import java.sql.SQLException;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class ControlPanelFeature {
 
@@ -16,7 +16,7 @@ public class ControlPanelFeature {
     @Given("tenant choosed {string} to view control panel")
     public void tenantChoosedToViewControlPanelUsernameIs(String string) {
 
-           assertTrue(string.equals("3"));
+        assertEquals("3", string);
 
     }
     @Given("the tenant has house booked before username is {string}")
@@ -34,7 +34,7 @@ public class ControlPanelFeature {
 
     @Given("tenant pressed {string} to view the control panel")
     public void tenantPressedToViewTheControlPanel(String arg0) {
-      assertTrue(arg0.equals("3"));
+        assertEquals("3", arg0);
     }
 
     @And("the tenant didnt booked before username is {string}")

@@ -1,8 +1,9 @@
-package loginfeature;
+package testcode;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import productioncode.LoginEntity;
 
 import java.sql.SQLException;
 
@@ -31,7 +32,7 @@ String tenant="tenant";
         adminFlag = false;
         String role=admin;
         if(role.equals(obj.checkValues(uname,pword))){
-            assertTrue(role.equals(obj.checkValues(uname,pword)));adminFlag = true;
+            assertEquals(role, obj.checkValues(uname, pword));adminFlag = true;
         }
     }
     @Then("admin login success")
@@ -94,15 +95,18 @@ String tenant="tenant";
     {
         assertTrue(true);
     }
-    @Given("first name  = {string}, second name = {string}, lastname = {string}, Phone={string}, email = {string}, age ={string}, OwUser = {string}, OwPass = {string} for owner and first name  = {string}, second name = {string}, lastname = {string}, Phone={string}, email = {string}, age ={string}, regNum = {string}, major = {string}, tenUser = {string}, tenPass = {string} for tenant and usernames isn't available")
-    public void first_name_second_name_lastname_phone_email_age_ow_user_ow_pass_for_owner_and_first_name_second_name_lastname_phone_email_age_reg_num_major_ten_user_ten_pass_for_tenant_and_usernames_isn_t_available(String Fname, String Mname, String Lname, String Phone, String Owemail, String age, String OwUser, String OwPass, String FFname, String MMname, String LLname, String PPhone, String tenmail, String Age, String regNum, String major, String tenUser, String tenPass) throws SQLException {
-        assertTrue(obj.failureReg(tenUser, tenPass));
-    }
+
     @Then("registration fails the account with username{string} and password {string} isn't created")
     public void registrationFailsTheAccountWithUsernameAndPasswordIsnTCreated(String username, String password) throws SQLException {
         if(tenant.equals(obj.checkValues(username, password))||owner.equals(obj.checkValues(username, password)))
         {
             assertTrue(tenant.equals(obj.checkValues(username, password))||owner.equals(obj.checkValues(username, password)));
         }
+    }
+
+
+    @And("tenUser = {string}, tenPass = {string} for tenant and usernames isn't available")
+    public void tenuserTenPassForTenantAndUsernamesIsnTAvailable(String arg0, String arg1) throws SQLException {
+        assertTrue(obj.failureReg(arg0, arg1));
     }
 }

@@ -1,4 +1,4 @@
-package loginfeature;
+package productioncode;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -131,6 +131,10 @@ else if (choose==5) {
             else if (loginOrSignUp==2) {
 logger.info("in");
             }
+            else {
+                break;
+            }
+
         }
     }
 }
