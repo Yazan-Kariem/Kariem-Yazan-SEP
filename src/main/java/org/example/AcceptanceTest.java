@@ -6,7 +6,7 @@ import io.cucumber.junit.CucumberOptions;
 import io.cucumber.junit.CucumberOptions.SnippetType;
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features ="/Users/yazanmansour/Downloads/Sakancom copy 3/src/main/Features",
+        features ="/Users/yazanmansour/eclipse-workspace/untitled3/src/main/Features",
         plugin = {"summary","html:target/cucumber/report.html"},
         monochrome = true, //readable output on console.
         snippets = SnippetType.CAMELCASE,
