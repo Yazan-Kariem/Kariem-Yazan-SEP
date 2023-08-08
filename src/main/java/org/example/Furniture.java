@@ -1,15 +1,15 @@
-package productioncode;
+package org.example;
 
 import java.sql.*;
 import java.util.logging.Logger;
 
 public class Furniture {
 
-    String picture;
-    String description;
-    String price;
-    String id;
-    String selled;
+     String picture;
+     String description;
+     String price;
+     String id;
+     String selled;
     String queryS = "Select * from forniture where username_tenant='";
     private static final Logger logger = Logger.getLogger(Furniture.class.getName());
     String host = "localhost";
@@ -52,7 +52,7 @@ resultSet.close();
             try (Connection connection = DriverManager.getConnection(url, username, password)) {
                 statement = connection.createStatement();
 
-                String query = queryS + userName + "'";
+                String query = queryS + userName + "' and Selled='No'";
                 ResultSet resultSet = statement.executeQuery(query);
 
                 while (resultSet.next()) {
@@ -82,18 +82,23 @@ resultSet.close();
 
     public boolean addFurniture(String userName, String picture, String description, String price, String id, String selled) throws SQLException {
         String query = "insert into forniture (id,picture,residence_location_desc,price,username_tenant,selled) value ('" + id + "','" + picture + "','" + description + "','" + price + "','" + userName + "','" + selled + "')";
-
+boolean flag=false;
 
         Statement statement = null;
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             statement = connection.createStatement();
             statement.executeUpdate(query);
+            flag=true;
 
-        } finally {
+        }
+        catch (Exception e){
+            flag=false;
+        }
+        finally {
             assert statement != null;
             statement.close();
         }
-        return true;
+        return flag;
 
 
     }
@@ -124,7 +129,7 @@ resultSet.close();
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             statement = connection.createStatement();
 
-            String query = queryS + userName + "' and selled='No' and id='" + id + "'";
+            String query = queryS + userName + "' and Selled='No' and id='" + id + "'";
 
             ResultSet resultSet = statement.executeQuery(query);
 

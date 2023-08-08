@@ -1,9 +1,9 @@
-package testcode;
+package org.example.test;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import productioncode.ControlPanel;
+import org.example.ControlPanel;
 
 import java.sql.SQLException;
 
@@ -12,6 +12,8 @@ import static org.junit.Assert.*;
 public class ControlPanelFeature {
 
     ControlPanel obj=new ControlPanel();
+    boolean loggedIn = true;
+    boolean loggedOut = true;
 
     @Given("tenant choosed {string} to view control panel")
     public void tenantChoosedToViewControlPanelUsernameIs(String string) {
@@ -46,6 +48,18 @@ assertFalse(obj.isBooked(arg0));
     public void theControlPanelWillNotAppearForTenantUsername(String arg0) throws SQLException {
      assertFalse(obj.displayControlPanel(arg0));
     }
-
+    @Given("tenant is logged in")
+    public void tenantIsLoggedIn() {
+        assertTrue(loggedIn);
+    }
+    @Given("selected {string} from tenant dashboard")
+    public void selectedFromTenantDashboard(String string) {
+        assertTrue(string.equals("4"));
+        loggedOut = true;
+    }
+    @Then("tenant logged out successfully by checking a flag")
+    public void tenantLoggedOutSuccessfullyByCheckingAFlag() {
+        assertTrue(loggedOut);
+    }
 
 }

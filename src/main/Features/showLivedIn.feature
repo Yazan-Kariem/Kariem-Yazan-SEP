@@ -8,6 +8,3 @@ Feature: show students info lived in house
     Given tenant pressed "4" to view peoples who lived in house
     And theres no peoples in houses id "2"
     Then this peoples username will not appear in house id "2"
-
-
-
